@@ -1,0 +1,21 @@
+{
+  "frontend/src/App.tsx": "Main application component using TanStack Router with proper component structure, defining routes for the home page ('/') and admin dashboard ('/admin') with a shared root layout containing the header and navy gradient background.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for backend integration, managing booking submissions, retrieval, and status updates with proper state invalidation.",
+  "frontend/src/components/HeroSection.tsx": "Hero section component featuring headline, CTAs for call and WhatsApp, trust badges with glassmorphism design, and background image with navy overlay.",
+  "frontend/src/components/ServicesSection.tsx": "Services section displaying three service categories (appliance repair, plumbing, electrical) in glassmorphism cards with icons and service lists, using Tailwind CSS v3 classes.",
+  "frontend/src/components/WhyChooseUs.tsx": "Benefits section showcasing five key advantages of Servexa with icons and descriptions in a responsive grid layout.",
+  "frontend/src/components/ServiceAreas.tsx": "Service areas section displaying Kolkata and Howrah coverage areas with map pin icons in gold-accented cards.",
+  "frontend/src/components/ContactSection.tsx": "Contact section with clickable phone numbers, WhatsApp button, address display, and Instagram link in glassmorphism cards.",
+  "frontend/src/components/FloatingWhatsApp.tsx": "Fixed floating WhatsApp button in bottom-right corner with pulse animation and green branding.",
+  "frontend/src/components/StickyCallBar.tsx": "Mobile-only sticky call bar at bottom of viewport with prominent call-to-action button.",
+  "frontend/src/components/TestimonialSlider.tsx": "Auto-rotating testimonial carousel with navigation controls, star ratings, and smooth transitions between customer reviews.",
+  "frontend/src/components/FAQSection.tsx": "Accordion-based FAQ section with expandable question-answer pairs using Radix UI accordion component.",
+  "frontend/src/components/BeforeAfterGallery.tsx": "Before/after service gallery showcasing completed work with side-by-side image comparison in glassmorphism cards.",
+  "frontend/src/components/BookingForm.tsx": "Service booking form with validation, service category selection, and backend integration showing success confirmation after submission.",
+  "frontend/src/components/Footer.tsx": "Footer component with copyright, Caffeine.ai attribution with UTM tracking, and love icon.",
+  "frontend/src/index.css": "Global styles with Poppins font, OKLCH color system for navy and gold theme, glassmorphism utilities, and custom shadow effects.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with navy-primary and gold-accent colors, Poppins font family, custom border radii, and gold shadow utilities.",
+  "frontend/src/components/Header.tsx": "Fixed header component displaying the Servexa logo with brand name and a call-to-action button, featuring glassmorphism styling and responsive design aligned with the navy-gold luxury theme.",
+  "frontend/src/components/AdminDashboard.tsx": "Admin dashboard component displaying all booking requests in a responsive table with status badges, dropdown menus to update booking status, loading/error states, and glassmorphism styling consistent with the navy-gold luxury theme.",
+  "frontend/src/main.tsx": "Application entry point with QueryClientProvider and Toaster component for toast notifications."
+}

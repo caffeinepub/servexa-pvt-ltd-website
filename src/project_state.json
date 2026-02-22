@@ -1,0 +1,247 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Modern, premium home services website for Servexa Pvt Ltd - a doorstep service provider in Kolkata & Howrah offering plumbing, electrical, and appliance repair services",
+  "architectural_notes": [
+    "Urban luxury design with deep navy, gold accents, glassmorphism cards",
+    "Mobile-first responsive design with fast loading performance (90+ Lighthouse)",
+    "SEO optimized for 'Home services Kolkata'",
+    "Modern fonts: Poppins or Inter",
+    "Smooth animations and soft shadows throughout",
+    "Simple CMS-editable content blocks"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-implement-hero-section-with-headline-fast-reliable-affordable-home-solutions-subtext-expert-plumbing-electrical-appliance-repair-at-your-doorstep-primary-cta-button-call-whatsapp-now-secondary-cta-button-book-service-and-trust-badges-displaying-verified-same-day-service-and-skilled-technicians",
+      "title": "Implement hero section with headline 'Fast • Reliable • Affordable Home Solutions', subtext 'Expert plumbing, electrical & appliance repair at your doorstep', primary CTA button 'Call & WhatsApp Now', secondary CTA button 'Book Service', and trust badges displaying 'verified', 'same-day service', and 'skilled technicians'",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-services-section-with-three-service-categories-displayed-as-cards-with-icons-home-appliance-repair-refrigerator-repair-washing-machine-repair-ac-window-ac-service-microwave-oven-repair-geyser-chimney-repair-plumbing-services-leak-detection-repair-water-heater-installation-repair-drain-cleaning-blockage-removal-bathroom-kitchen-fittings-and-electrical-services-wiring-rewiring-light-fan-installation-switchboard-socket-repair-circuit-breaker-panel-repair",
+      "title": "Create services section with three service categories displayed as cards with icons: Home Appliance Repair (refrigerator repair, washing machine repair, AC & Window AC service, microwave & oven repair, geyser & chimney repair), Plumbing Services (leak detection & repair, water heater installation & repair, drain cleaning & blockage removal, bathroom & kitchen fittings), and Electrical Services (wiring & rewiring, light & fan installation, switchboard & socket repair, circuit breaker & panel repair)",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-why-choose-us-section-highlighting-five-key-benefits-skilled-verified-technicians-fast-doorstep-service-affordable-pricing-service-for-all-major-brands-same-day-service-available",
+      "title": "Build 'Why Choose Us' section highlighting five key benefits: Skilled & verified technicians, Fast doorstep service, Affordable pricing, Service for all major brands, Same day service available",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-service-areas-section-showing-kolkata-and-howrah-as-the-coverage-areas",
+      "title": "Display service areas section showing 'Kolkata' and 'Howrah' as the coverage areas",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-contact-section-with-click-to-call-functionality-for-phone-numbers-91237-79241-70443-23746-81006-39423-whatsapp-quick-chat-button-address-display-g-175-a-dhankheti-garden-reach-kolkata-700024-and-instagram-link-servexa-pvt-ltd",
+      "title": "Create contact section with click-to-call functionality for phone numbers (91237 79241, 70443 23746, 81006 39423), WhatsApp quick chat button, address display (G-175/A Dhankheti, Garden Reach, Kolkata – 700024), and Instagram link (@servexa_pvt_ltd)",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-floating-whatsapp-button-that-remains-visible-while-scrolling-and-sticky-call-bar-on-mobile-devices",
+      "title": "Implement floating WhatsApp button that remains visible while scrolling and sticky call bar on mobile devices",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-testimonial-slider-component-that-displays-customer-reviews-in-a-carousel-format-with-smooth-transitions",
+      "title": "Build testimonial slider component that displays customer reviews in a carousel format with smooth transitions",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-faq-accordion-section-with-expandable-collapsible-question-answer-pairs-related-to-home-services",
+      "title": "Create FAQ accordion section with expandable/collapsible question-answer pairs related to home services",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-before-after-service-gallery-showcasing-completed-service-work-with-image-comparison-functionality",
+      "title": "Implement before/after service gallery showcasing completed service work with image comparison functionality",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-service-booking-form-with-service-category-selection-dropdown-contact-information-fields-and-submission-functionality",
+      "title": "Create service booking form with service category selection dropdown, contact information fields, and submission functionality",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-urban-luxury-design-theme-with-deep-navy-primary-color-gold-accents-white-backgrounds-subtle-gradients-glassmorphism-cards-soft-shadows-and-smooth-animations-throughout-the-entire-website-using-poppins-or-inter-font-family",
+      "title": "Apply urban luxury design theme with deep navy primary color, gold accents, white backgrounds, subtle gradients, glassmorphism cards, soft shadows, and smooth animations throughout the entire website using Poppins or Inter font family",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-servexa-logo-gold-house-with-wrench-icon-to-the-header-navigation-area-of-the-website-ensuring-it-s-prominently-displayed-and-aligned-with-the-urban-luxury-design-theme",
+      "title": "Add the Servexa logo (gold house with wrench icon) to the header/navigation area of the website, ensuring it's prominently displayed and aligned with the urban luxury design theme",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-the-generated-servexa-logo-as-a-static-asset-served-from-frontend-public-assets-generated",
+      "title": "Render the generated Servexa logo as a static asset served from frontend/public/assets/generated",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-admin-dashboard-page-component-that-displays-all-booking-requests-in-a-table-format-showing-customer-name-phone-number-service-category-address-and-submission-timestamp",
+      "title": "Create an admin dashboard page component that displays all booking requests in a table format showing customer name, phone number, service category, address, and submission timestamp",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-status-tracking-functionality-to-mark-booking-requests-as-pending-or-completed-with-visual-indicators",
+      "title": "Add status tracking functionality to mark booking requests as 'pending' or 'completed' with visual indicators",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-navigation-access-to-the-admin-dashboard-from-the-header-or-create-a-dedicated-admin-route-accessible-via-url-path-like-admin",
+      "title": "Add navigation access to the admin dashboard from the header or create a dedicated admin route accessible via URL path like '/admin'",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-react-query-hooks-to-fetch-all-bookings-and-update-booking-status-ensuring-the-dashboard-refreshes-automatically-after-status-changes",
+      "title": "Integrate React Query hooks to fetch all bookings and update booking status, ensuring the dashboard refreshes automatically after status changes",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Hero section with CTAs and trust badges",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Services section with three categories (appliance, plumbing, electrical)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Why Choose Us section with key benefits",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Service areas display (Kolkata & Howrah)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Contact section with phone numbers, address, and social media",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Floating WhatsApp button and sticky call bar",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Testimonial slider component",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "FAQ accordion section",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Before/after service gallery",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Service booking form with service selection",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Store booking submissions in backend with fields for customer name, phone number, service category, address, and submission timestamp",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-23",
+      "summary": "Add logo to the website",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "Admin dashboard to view and manage booking requests with status tracking",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-27",
+      "summary": "Update backend main.mo to include a status field in the booking data structure and provide functions to update booking status by ID",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Servexa Pvt Ltd Website",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

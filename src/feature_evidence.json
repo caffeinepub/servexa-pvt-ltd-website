@@ -1,0 +1,78 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-an-admin-dashboard-page-component-that-displays-all-booking-requests-in-a-table-format-showing-customer-name-phone-number-service-category-address-and-submission-timestamp",
+      "featureTitle": "Create an admin dashboard page component that displays all booking requests in a table format showing customer name, phone number, service category, address, and submission timestamp",
+      "files": [
+        "frontend/src/components/AdminDashboard.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-15"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-status-tracking-functionality-to-mark-booking-requests-as-pending-or-completed-with-visual-indicators",
+      "featureTitle": "Add status tracking functionality to mark booking requests as 'pending' or 'completed' with visual indicators",
+      "files": [
+        "frontend/src/components/AdminDashboard.tsx",
+        "frontend/src/hooks/useQueries.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-16"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-navigation-access-to-the-admin-dashboard-from-the-header-or-create-a-dedicated-admin-route-accessible-via-url-path-like-admin",
+      "featureTitle": "Add navigation access to the admin dashboard from the header or create a dedicated admin route accessible via URL path like '/admin'",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-18"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-integrate-react-query-hooks-to-fetch-all-bookings-and-update-booking-status-ensuring-the-dashboard-refreshes-automatically-after-status-changes",
+      "featureTitle": "Integrate React Query hooks to fetch all bookings and update booking status, ensuring the dashboard refreshes automatically after status changes",
+      "files": [
+        "frontend/src/components/AdminDashboard.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-19"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

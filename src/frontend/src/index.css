@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.75rem;
+        
+        /* Navy Primary - Deep navy blue */
+        --navy-primary: 0.15 0.15 240;
+        
+        /* Gold Accent - Luxury gold */
+        --gold-accent: 0.65 0.15 60;
+        
+        /* Background colors */
+        --background: 0.98 0 0;
+        --foreground: 0.145 0 0;
+        
+        /* Card colors */
+        --card: 1 0 0;
+        --card-foreground: 0.145 0 0;
+        
+        /* Popover colors */
+        --popover: 1 0 0;
+        --popover-foreground: 0.145 0 0;
+        
+        /* Primary colors */
+        --primary: 0.15 0.15 240;
+        --primary-foreground: 0.985 0 0;
+        
+        /* Secondary colors */
+        --secondary: 0.97 0 0;
+        --secondary-foreground: 0.15 0.15 240;
+        
+        /* Muted colors */
+        --muted: 0.97 0 0;
+        --muted-foreground: 0.556 0 0;
+        
+        /* Accent colors */
+        --accent: 0.65 0.15 60;
+        --accent-foreground: 0.15 0.15 240;
+        
+        /* Destructive colors */
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        
+        /* Border and input */
+        --border: 0.922 0 0;
+        --input: 0.922 0 0;
+        --ring: 0.65 0.15 60;
+        
+        /* Chart colors */
+        --chart-1: 0.646 0.222 41.116;
+        --chart-2: 0.6 0.118 184.704;
+        --chart-3: 0.398 0.07 227.392;
+        --chart-4: 0.828 0.189 84.429;
+        --chart-5: 0.769 0.188 70.08;
+    }
+
+    .dark {
+        --background: 0.145 0 0;
+        --foreground: 0.985 0 0;
+        --card: 0.15 0.15 240;
+        --card-foreground: 0.985 0 0;
+        --popover: 0.15 0.15 240;
+        --popover-foreground: 0.985 0 0;
+        --primary: 0.65 0.15 60;
+        --primary-foreground: 0.15 0.15 240;
+        --secondary: 0.25 0.1 240;
+        --secondary-foreground: 0.985 0 0;
+        --muted: 0.25 0.1 240;
+        --muted-foreground: 0.708 0 0;
+        --accent: 0.65 0.15 60;
+        --accent-foreground: 0.985 0 0;
+        --destructive: 0.704 0.191 22.216;
+        --destructive-foreground: 0.985 0 0;
+        --border: 1 0 0 / 15%;
+        --input: 1 0 0 / 20%;
+        --ring: 0.65 0.15 60;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Poppins', sans-serif;
+    }
+}
+
+@layer utilities {
+    .glass-card {
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
+    
+    .shadow-gold {
+        box-shadow: 0 10px 30px -5px rgba(212, 175, 55, 0.3);
+    }
+    
+    .shadow-gold-lg {
+        box-shadow: 0 20px 50px -10px rgba(212, 175, 55, 0.4);
+    }
+}

@@ -1,0 +1,112 @@
+{
+  "kind": "build_request",
+  "title": "Add admin dashboard to view and manage booking requests",
+  "projectName": "Servexa",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-15",
+      "text": "Create an admin dashboard page component that displays all booking requests in a table format showing customer name, phone number, service category, address, and submission timestamp",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-how-to-see",
+          "msg-user-yes"
+        ],
+        "quotes": [
+          "how to see our website booking request",
+          "yes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Dashboard displays all booking submissions in a sortable table",
+        "Table columns include: name, phone, service type, address, timestamp",
+        "Timestamps are formatted in a human-readable way",
+        "Table is responsive and works on mobile devices"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Add status tracking functionality to mark booking requests as 'pending' or 'completed' with visual indicators",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-assistant-admin-dashboard"
+        ],
+        "quotes": [
+          "Ability to mark requests as 'completed' or 'pending'"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each booking has a status field (pending/completed)",
+        "Admin can toggle status with a button or dropdown",
+        "Status changes are persisted in the backend",
+        "Visual distinction between pending and completed bookings (colors/badges)"
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Update backend main.mo to include a status field in the booking data structure and provide functions to update booking status by ID",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-admin-dashboard"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Booking type includes status field (Text or variant type)",
+        "Update function accepts booking ID and new status",
+        "Status defaults to 'pending' for new bookings",
+        "Query function retrieves bookings with their current status"
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "text": "Add navigation access to the admin dashboard from the header or create a dedicated admin route accessible via URL path like '/admin'",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-how-to-see"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Admin dashboard is accessible via a URL route",
+        "Route is not prominently advertised in public navigation (admin-only access)",
+        "Dashboard page uses consistent styling with the rest of the site"
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "text": "Integrate React Query hooks to fetch all bookings and update booking status, ensuring the dashboard refreshes automatically after status changes",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-admin-dashboard"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Dashboard uses useGetAllBookings hook to fetch booking data",
+        "Status update mutation invalidates the bookings query",
+        "Loading and error states are handled gracefully",
+        "Dashboard shows real-time updates after mutations"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify existing booking form functionality",
+    "Maintain single-actor architecture in backend/main.mo",
+    "Use existing React Query hooks pattern from useQueries.ts",
+    "Admin dashboard must use the urban luxury design theme with navy-gold colors and glassmorphism cards"
+  ],
+  "nonGoals": [
+    "Authentication/authorization for admin access",
+    "Exporting bookings to CSV or external systems",
+    "Email notifications for new bookings",
+    "Advanced filtering or search functionality",
+    "Editing customer details after submission"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
