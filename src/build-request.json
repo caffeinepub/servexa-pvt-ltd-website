@@ -1,89 +1,150 @@
 {
   "kind": "build_request",
-  "title": "Fix admin dashboard routing and loading issues",
-  "projectName": "Servexa",
-  "priority": "high",
+  "title": "Add Internet Identity authentication to protect admin dashboard",
+  "projectName": "Servexa Admin",
+  "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Fix the /admin route configuration to ensure the admin dashboard page loads correctly in Chrome browser when visiting https://5t3nc-iiaaa-aaaap-qkmaq-cai.icp0.io/admin",
+      "text": "Integrate Internet Identity authentication into the frontend application, wrapping the App component with authentication context",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1",
-          "msg-3",
-          "msg-5",
-          "msg-7"
+          "msg-18",
+          "msg-19"
         ],
         "quotes": [
-          "if i am searching in chrome but it's not opening it's not showing anything",
-          "you're copying the full URL https://5t3nc-iiaaa-aaaap-qkmaq-cai.icp0.io/admin into Chrome, but the page isn't loading or displaying anything"
+          "Internet Identity integration (passkeys, Google, Apple, Microsoft login)"
         ]
       },
       "acceptanceCriteria": [
-        "The /admin URL loads successfully in Chrome without blank pages or errors",
-        "The admin dashboard page renders and displays content correctly",
-        "No browser console errors related to routing"
+        "Internet Identity provider wraps the application",
+        "Authentication state is available throughout the app",
+        "Login and logout functionality is accessible"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Ensure the admin dashboard displays all booking requests in a table format with columns for customer name, phone number, service type, address, and submission date",
+      "text": "Protect the /admin route so that only authenticated users can access the admin dashboard",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5",
-          "msg-7"
+          "msg-18",
+          "msg-19"
+        ],
+        "quotes": [
+          "Protected `/admin` route - only authenticated users can access"
         ]
       },
       "acceptanceCriteria": [
-        "All booking requests are fetched and displayed in the table",
-        "Table shows customer name, phone, service, address, and date columns",
-        "Data loads correctly from the backend"
+        "Unauthenticated users are redirected to a login page when accessing /admin",
+        "Authenticated users can access the admin dashboard",
+        "Route protection is enforced before rendering the AdminDashboard component"
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Include status toggle functionality in the admin dashboard to allow marking bookings as pending or completed",
-      "target": "both",
+      "text": "Keep the booking form at the home page publicly accessible without requiring authentication",
+      "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5",
-          "msg-7"
+          "msg-18",
+          "msg-19"
+        ],
+        "quotes": [
+          "Public booking form remains accessible to customers",
+          "The booking form will stay public so customers can submit requests"
         ]
       },
       "acceptanceCriteria": [
-        "Each booking row has a status indicator showing pending or completed",
-        "Status can be toggled between pending and completed states",
-        "Status updates persist in the backend"
+        "The home page with booking form loads without authentication",
+        "Customers can submit booking requests without logging in",
+        "No authentication prompt appears on the home page"
       ]
     },
     {
       "id": "REQ-4",
-      "text": "Add error handling to the admin dashboard to display meaningful error messages if data fails to load or if there are connection issues",
+      "text": "Add a login button or interface element that allows users to authenticate using Internet Identity",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5"
+          "msg-18",
+          "msg-19"
+        ],
+        "quotes": [
+          "Login/logout functionality"
         ]
       },
       "acceptanceCriteria": [
-        "Error states are caught and displayed to the user",
-        "Error messages are clear and actionable",
-        "Loading states are shown while data is being fetched"
+        "A login button is visible to unauthenticated users",
+        "Clicking the login button initiates Internet Identity authentication flow",
+        "The button appears in an appropriate location (header or dedicated login page)"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add a logout button that allows authenticated users to sign out and clears their session",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-18",
+          "msg-19"
+        ],
+        "quotes": [
+          "Login/logout functionality"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A logout button is visible to authenticated users",
+        "Clicking logout clears the authentication state",
+        "After logout, users cannot access the protected admin route without re-authenticating"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Configure the backend actor to use authenticated identities when available for admin operations",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-18",
+          "msg-19"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend accepts authenticated calls from Internet Identity principals",
+        "Admin operations (getAllBookings, updateBookingStatus) work with authenticated requests",
+        "Public booking submission continues to work for anonymous users"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Allow any authenticated Internet Identity user to access the admin dashboard",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-18"
+        ],
+        "quotes": [
+          "Any authenticated user will be able to access the admin dashboard"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No additional role-based access control is implemented",
+        "All authenticated users can view and manage bookings",
+        "Authentication is the only requirement for admin access"
       ]
     }
   ],
   "constraints": [
-    "Must maintain existing backend booking data structure and API",
-    "Must preserve existing React Query integration for data fetching",
-    "Must use TanStack Router for route configuration"
+    "Use the existing useInternetIdentity hook and InternetIdentityProvider already present in the codebase",
+    "Do not modify the public booking form behavior or accessibility",
+    "Maintain the existing admin dashboard functionality while adding authentication"
   ],
   "nonGoals": [
-    "Adding authentication or login to the admin dashboard",
-    "Creating new booking submission features",
-    "Modifying the public-facing booking form",
-    "Changing the backend data schema"
+    "Role-based access control or restricting admin access to specific users",
+    "Multi-factor authentication beyond Internet Identity",
+    "User registration or profile management",
+    "Password-based authentication"
   ],
   "imageRequirements": {
     "required": [],

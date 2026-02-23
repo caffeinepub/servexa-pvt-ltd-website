@@ -1,79 +1,121 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Fix admin dashboard routing and loading issues",
+  "title": "Add Internet Identity authentication to protect admin dashboard",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Fix /admin route configuration to ensure the admin dashboard page loads correctly in Chrome browser",
+      "summary": "Integrate Internet Identity authentication into the frontend application",
       "acceptanceCriteria": [
-        "The /admin URL loads successfully in Chrome without blank pages or errors",
-        "The admin dashboard page renders and displays content correctly",
-        "No browser console errors related to routing"
+        "Internet Identity provider wraps the application",
+        "Authentication state is available throughout the app",
+        "Login and logout functionality is accessible"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/main.tsx",
           "operation": "modify",
-          "description": "Review and fix the /admin route configuration in TanStack Router to ensure proper route registration and component rendering. Verify the route path matches '/admin' exactly and the AdminDashboard component is correctly imported and referenced. Ensure the route is included in the router's route tree configuration."
+          "description": "Verify that InternetIdentityProvider from useInternetIdentity hook already wraps the App component. Confirm the authentication context is properly initialized and available throughout the application. The existing implementation should already satisfy this requirement."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Ensure the admin dashboard displays all booking requests in a table format with all required columns",
+      "summary": "Protect the /admin route for authenticated users only",
       "acceptanceCriteria": [
-        "All booking requests are fetched and displayed in the table",
-        "Table shows customer name, phone, service, address, and date columns",
-        "Data loads correctly from the backend"
+        "Unauthenticated users are redirected to a login page when accessing /admin",
+        "Authenticated users can access the admin dashboard",
+        "Route protection is enforced before rendering the AdminDashboard component"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/AdminDashboard.tsx",
-          "operation": "modify",
-          "description": "Verify the table renders all columns (customer name, phone number, service type, address, submission date) correctly. Ensure the useGetAllBookings hook from useQueries.ts is properly integrated and the data mapping displays each booking field in the appropriate table column. Verify timestamp formatting for the submission date column."
+          "path": "frontend/src/components/ProtectedRoute.tsx",
+          "operation": "create",
+          "description": "Create a ProtectedRoute component that checks authentication state using useInternetIdentity hook. If the user is not authenticated, redirect to a login page. If authenticated, render the child components. This component will wrap the admin route."
         },
         {
-          "path": "frontend/src/hooks/useQueries.ts",
+          "path": "frontend/src/components/LoginPage.tsx",
+          "operation": "create",
+          "description": "Create a LoginPage component that displays a login interface with a button to initiate Internet Identity authentication. Include branding and a message explaining that authentication is required to access the admin dashboard. After successful login, redirect users to /admin."
+        },
+        {
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Review the useGetAllBookings hook implementation to ensure it correctly calls the backend getAllBookings method and returns booking data with proper type safety. Verify React Query configuration including staleTime and refetchInterval settings are appropriate for admin dashboard usage."
+          "description": "Add a new route for /login that renders the LoginPage component. Wrap the /admin route with the ProtectedRoute component to enforce authentication before rendering AdminDashboard. Ensure the home route (/) remains publicly accessible without any authentication wrapper."
         }
       ]
     },
     {
       "id": "REQ-3",
-      "summary": "Include status toggle functionality in the admin dashboard to allow marking bookings as pending or completed",
+      "summary": "Keep the booking form at the home page publicly accessible",
       "acceptanceCriteria": [
-        "Each booking row has a status indicator showing pending or completed",
-        "Status can be toggled between pending and completed states",
-        "Status updates persist in the backend"
+        "The home page with booking form loads without authentication",
+        "Customers can submit booking requests without logging in",
+        "No authentication prompt appears on the home page"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/AdminDashboard.tsx",
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Ensure each booking row includes a status toggle UI element (dropdown or toggle button) that displays the current status (pending or completed) and allows toggling between states. Wire the toggle to call the useUpdateBookingStatus mutation hook with the booking ID and new status. Verify the UI updates optimistically and refetches data after successful mutation."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Review the useUpdateBookingStatus mutation hook to ensure it correctly calls the backend updateBookingStatus method with the booking ID and new status. Verify mutation success handling includes query invalidation to refresh the booking list. Ensure proper error handling and TypeScript types match the backend Status enum."
+          "description": "Verify that the home route (/) is not wrapped by any authentication component. Ensure it renders the existing page layout with BookingForm without requiring login. This should already be the case, but confirm no authentication guards are accidentally applied to the home route."
         }
       ]
     },
     {
       "id": "REQ-4",
-      "summary": "Add error handling to the admin dashboard to display meaningful error messages if data fails to load or if there are connection issues",
+      "summary": "Add a login button for Internet Identity authentication",
       "acceptanceCriteria": [
-        "Error states are caught and displayed to the user",
-        "Error messages are clear and actionable",
-        "Loading states are shown while data is being fetched"
+        "A login button is visible to unauthenticated users",
+        "Clicking the login button initiates Internet Identity authentication flow",
+        "The button appears in an appropriate location (header or dedicated login page)"
       ],
       "file_operations": [
         {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Add a login button to the header that is visible only to unauthenticated users. Use the useInternetIdentity hook to check authentication state and to trigger the login flow when clicked. Position the button appropriately in the header layout alongside existing elements."
+        },
+        {
+          "path": "frontend/src/components/LoginPage.tsx",
+          "operation": "modify",
+          "description": "Ensure the LoginPage component includes a prominent login button that calls the login method from useInternetIdentity hook when clicked. Style the button consistently with the existing design system using navy and gold colors."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add a logout button for authenticated users",
+      "acceptanceCriteria": [
+        "A logout button is visible to authenticated users",
+        "Clicking logout clears the authentication state",
+        "After logout, users cannot access the protected admin route without re-authenticating"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Add a logout button to the header that is visible only to authenticated users. Use the useInternetIdentity hook to check authentication state and to trigger the logout flow when clicked. Replace the login button with the logout button for authenticated users."
+        },
+        {
           "path": "frontend/src/components/AdminDashboard.tsx",
           "operation": "modify",
-          "description": "Enhance error handling to check for query error states from useGetAllBookings and mutation errors from useUpdateBookingStatus. Display clear, user-friendly error messages that explain what went wrong (e.g., 'Failed to load bookings', 'Unable to update status'). Show loading spinners or skeleton states while data is being fetched. Include retry mechanisms or instructions for connection issues."
+          "description": "Add a logout button to the AdminDashboard component, positioned in a visible location such as the top-right corner or within the dashboard header. Use the useInternetIdentity hook to trigger logout, which will redirect users away from the protected route."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Allow any authenticated Internet Identity user to access the admin dashboard",
+      "acceptanceCriteria": [
+        "No additional role-based access control is implemented",
+        "All authenticated users can view and manage bookings",
+        "Authentication is the only requirement for admin access"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProtectedRoute.tsx",
+          "operation": "modify",
+          "description": "Ensure the ProtectedRoute component only checks for authentication status without implementing any role-based access control. Any user with a valid Internet Identity can access protected routes. Do not add authorization checks beyond authentication."
         }
       ]
     }

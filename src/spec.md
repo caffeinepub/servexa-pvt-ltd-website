@@ -1,12 +1,13 @@
 # Specification
 
 ## Summary
-**Goal:** Fix admin dashboard routing and loading issues to ensure the page displays booking requests correctly in Chrome browser.
+**Goal:** Add Internet Identity authentication to protect the admin dashboard while keeping the booking form publicly accessible.
 
 **Planned changes:**
-- Fix /admin route configuration to load the admin dashboard page correctly at https://5t3nc-iiaaa-aaaap-qkmaq-cai.icp0.io/admin
-- Display all booking requests in a table with customer name, phone number, service type, address, and submission date
-- Add status toggle functionality to mark bookings as pending or completed
-- Implement error handling to show meaningful error messages if data fails to load
+- Integrate Internet Identity authentication provider into the frontend application
+- Protect the /admin route to require authentication before access
+- Add login and logout buttons for authentication flow
+- Configure backend to accept authenticated calls for admin operations
+- Keep the home page booking form publicly accessible without authentication
 
-**User-visible outcome:** Admins can visit the /admin URL in Chrome to view all booking requests in a table format, toggle booking status between pending and completed, and see helpful error messages if issues occur.
+**User-visible outcome:** Customers can submit booking requests without logging in. Admin users must authenticate using Internet Identity (passkeys, Google, Apple, Microsoft) to access the admin dashboard where they can view and manage bookings. Any authenticated user can access the admin features.

@@ -1,78 +1,106 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-23T08:39:53.962Z",
+  "generatedAt": "2026-02-23T09:24:19.770Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 4,
-    "implemented": 4,
+    "total": 7,
+    "implemented": 5,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Fix the /admin route configuration to ensure the admin dashboard page loads correctly in Chrome browser when visiting https://5t3nc-iiaaa-aaaap-qkmaq-cai.icp0.io/admin",
-        "status": "implemented",
+        "summary": "Integrate Internet Identity authentication into the frontend application, wrapping the App component with authentication context",
+        "status": "missing",
         "plannedFiles": [
-          "frontend/src/App.tsx"
+          "frontend/src/main.tsx"
         ],
-        "matchedFiles": [
-          "frontend/src/App.tsx"
-        ]
+        "matchedFiles": []
       },
       {
         "id": "REQ-2",
-        "summary": "Ensure the admin dashboard displays all booking requests in a table format with columns for customer name, phone number, service type, address, and submission date",
+        "summary": "Protect the /admin route so that only authenticated users can access the admin dashboard",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/AdminDashboard.tsx",
-          "frontend/src/hooks/useQueries.ts"
+          "frontend/src/components/ProtectedRoute.tsx",
+          "frontend/src/components/LoginPage.tsx",
+          "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/AdminDashboard.tsx",
-          "frontend/src/hooks/useQueries.ts"
+          "frontend/src/components/ProtectedRoute.tsx",
+          "frontend/src/components/LoginPage.tsx",
+          "frontend/src/App.tsx"
         ]
       },
       {
         "id": "REQ-3",
-        "summary": "Include status toggle functionality in the admin dashboard to allow marking bookings as pending or completed",
+        "summary": "Keep the booking form at the home page publicly accessible without requiring authentication",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/AdminDashboard.tsx",
-          "frontend/src/hooks/useQueries.ts"
+          "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/AdminDashboard.tsx",
-          "frontend/src/hooks/useQueries.ts"
+          "frontend/src/App.tsx"
         ]
       },
       {
         "id": "REQ-4",
-        "summary": "Add error handling to the admin dashboard to display meaningful error messages if data fails to load or if there are connection issues",
+        "summary": "Add a login button or interface element that allows users to authenticate using Internet Identity",
         "status": "implemented",
         "plannedFiles": [
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/LoginPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/LoginPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Add a logout button that allows authenticated users to sign out and clears their session",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Header.tsx",
           "frontend/src/components/AdminDashboard.tsx"
         ],
         "matchedFiles": [
+          "frontend/src/components/Header.tsx",
           "frontend/src/components/AdminDashboard.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Configure the backend actor to use authenticated identities when available for admin operations",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Allow any authenticated Internet Identity user to access the admin dashboard",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ProtectedRoute.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ProtectedRoute.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
     "frontend/src/App.tsx",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
     "frontend/src/components/AdminDashboard.tsx",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/LoginPage.tsx",
+    "frontend/src/components/ProtectedRoute.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

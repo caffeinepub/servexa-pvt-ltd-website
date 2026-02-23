@@ -13,6 +13,8 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 import StickyCallBar from './components/StickyCallBar';
 import Footer from './components/Footer';
 import AdminDashboard from './components/AdminDashboard';
+import LoginPage from './components/LoginPage';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function RootLayout() {
   return (
@@ -46,9 +48,19 @@ function HomePage() {
 
 function AdminPage() {
   return (
-    <div className="pt-16 md:pt-20 min-h-screen">
-      <AdminDashboard />
-      <Footer />
+    <ProtectedRoute>
+      <div className="pt-16 md:pt-20 min-h-screen">
+        <AdminDashboard />
+        <Footer />
+      </div>
+    </ProtectedRoute>
+  );
+}
+
+function LoginPageWrapper() {
+  return (
+    <div className="pt-16 md:pt-20">
+      <LoginPage />
     </div>
   );
 }
@@ -63,13 +75,19 @@ const indexRoute = createRoute({
   component: HomePage,
 });
 
+const loginRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/login',
+  component: LoginPageWrapper,
+});
+
 const adminRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/admin',
   component: AdminPage,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, adminRoute]);
+const routeTree = rootRoute.addChildren([indexRoute, loginRoute, adminRoute]);
 
 const router = createRouter({ 
   routeTree,

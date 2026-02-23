@@ -2,29 +2,12 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-fix-the-admin-route-configuration-to-ensure-the-admin-dashboard-page-loads-correctly-in-chrome-browser-when-visiting-https-5t3nc-iiaaa-aaaap-qkmaq-cai-icp0-io-admin",
-      "featureTitle": "Fix the /admin route configuration to ensure the admin dashboard page loads correctly in Chrome browser when visiting https://5t3nc-iiaaa-aaaap-qkmaq-cai.icp0.io/admin",
+      "featureId": "feature-protect-the-admin-route-so-that-only-authenticated-users-can-access-the-admin-dashboard",
+      "featureTitle": "Protect the /admin route so that only authenticated users can access the admin dashboard",
       "files": [
-        "frontend/src/App.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-ensure-the-admin-dashboard-displays-all-booking-requests-in-a-table-format-with-columns-for-customer-name-phone-number-service-type-address-and-submission-date",
-      "featureTitle": "Ensure the admin dashboard displays all booking requests in a table format with columns for customer name, phone number, service type, address, and submission date",
-      "files": [
-        "frontend/src/components/AdminDashboard.tsx",
-        "frontend/src/hooks/useQueries.ts"
+        "frontend/src/App.tsx",
+        "frontend/src/components/LoginPage.tsx",
+        "frontend/src/components/ProtectedRoute.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -39,11 +22,10 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-include-status-toggle-functionality-in-the-admin-dashboard-to-allow-marking-bookings-as-pending-or-completed",
-      "featureTitle": "Include status toggle functionality in the admin dashboard to allow marking bookings as pending or completed",
+      "featureId": "feature-keep-the-booking-form-at-the-home-page-publicly-accessible-without-requiring-authentication",
+      "featureTitle": "Keep the booking form at the home page publicly accessible without requiring authentication",
       "files": [
-        "frontend/src/components/AdminDashboard.tsx",
-        "frontend/src/hooks/useQueries.ts"
+        "frontend/src/App.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -58,10 +40,11 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-error-handling-to-the-admin-dashboard-to-display-meaningful-error-messages-if-data-fails-to-load-or-if-there-are-connection-issues",
-      "featureTitle": "Add error handling to the admin dashboard to display meaningful error messages if data fails to load or if there are connection issues",
+      "featureId": "feature-add-a-login-button-or-interface-element-that-allows-users-to-authenticate-using-internet-identity",
+      "featureTitle": "Add a login button or interface element that allows users to authenticate using Internet Identity",
       "files": [
-        "frontend/src/components/AdminDashboard.tsx"
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/LoginPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -72,6 +55,43 @@
       ],
       "testIds": [
         "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-logout-button-that-allows-authenticated-users-to-sign-out-and-clears-their-session",
+      "featureTitle": "Add a logout button that allows authenticated users to sign out and clears their session",
+      "files": [
+        "frontend/src/components/AdminDashboard.tsx",
+        "frontend/src/components/Header.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-allow-any-authenticated-internet-identity-user-to-access-the-admin-dashboard",
+      "featureTitle": "Allow any authenticated Internet Identity user to access the admin dashboard",
+      "files": [
+        "frontend/src/components/ProtectedRoute.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
       ],
       "confidence": "high"
     }

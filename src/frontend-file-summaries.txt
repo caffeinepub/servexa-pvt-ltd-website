@@ -1,5 +1,5 @@
 {
-  "frontend/src/App.tsx": "Main application component using TanStack Router with proper route configuration for home page ('/') and admin dashboard ('/admin'), both wrapped in a shared root layout with header and navy gradient background, plus Footer added to admin page.",
+  "frontend/src/App.tsx": "Main application component using TanStack Router with routes for home page ('/'), login page ('/login'), and protected admin dashboard ('/admin') wrapped in ProtectedRoute, all within a shared root layout.",
   "frontend/src/hooks/useQueries.ts": "React Query hooks for backend integration managing booking submissions, retrieval with auto-refresh every 30 seconds, and status updates with proper error handling and state invalidation.",
   "frontend/src/components/HeroSection.tsx": "Hero section component featuring headline, CTAs for call and WhatsApp, trust badges with glassmorphism design, and background image with navy overlay.",
   "frontend/src/components/ServicesSection.tsx": "Services section displaying three service categories (appliance repair, plumbing, electrical) in glassmorphism cards with icons and service lists, using Tailwind CSS v3 classes.",
@@ -15,7 +15,9 @@
   "frontend/src/components/Footer.tsx": "Footer component with copyright, Caffeine.ai attribution with UTM tracking, and love icon.",
   "frontend/src/index.css": "Global styles with Poppins font, OKLCH color system for navy and gold theme, glassmorphism utilities, and custom shadow effects.",
   "frontend/tailwind.config.js": "Tailwind configuration extended with navy-primary and gold-accent colors, Poppins font family, custom border radii, and gold shadow utilities.",
-  "frontend/src/components/Header.tsx": "Fixed header component displaying the Servexa logo with brand name and a call-to-action button, featuring glassmorphism styling and responsive design aligned with the navy-gold luxury theme.",
-  "frontend/src/components/AdminDashboard.tsx": "Admin dashboard component displaying all booking requests in a responsive table with enhanced error handling, loading states, status badges, clickable phone numbers, dropdown menus to update booking status, and summary statistics showing pending/completed counts.",
-  "frontend/src/main.tsx": "Application entry point with QueryClientProvider, InternetIdentityProvider, and Toaster component for toast notifications with improved query client configuration."
+  "frontend/src/components/Header.tsx": "Fixed header component with Servexa logo, brand name, call-to-action button, and conditional login/logout buttons based on Internet Identity authentication state.",
+  "frontend/src/components/AdminDashboard.tsx": "Admin dashboard component displaying all booking requests in a responsive table with status management, summary statistics, and a logout button in the header for authenticated users.",
+  "frontend/src/main.tsx": "Application entry point with QueryClientProvider, InternetIdentityProvider, and Toaster component for toast notifications with improved query client configuration.",
+  "frontend/src/components/ProtectedRoute.tsx": "Route guard component that checks Internet Identity authentication status and redirects unauthenticated users to the login page, with loading states during initialization.",
+  "frontend/src/components/LoginPage.tsx": "Login page component with Internet Identity authentication button, error handling, and automatic redirect to admin dashboard after successful login."
 }

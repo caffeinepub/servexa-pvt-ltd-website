@@ -1,8 +1,25 @@
-import { Phone } from 'lucide-react';
+import { Phone, LogIn, LogOut } from 'lucide-react';
+import { useNavigate } from '@tanstack/react-router';
+import { useInternetIdentity } from '../hooks/useInternetIdentity';
+import { Button } from '@/components/ui/button';
 
 export default function Header() {
+  const navigate = useNavigate();
+  const { identity, clear, login, isLoggingIn } = useInternetIdentity();
+  
+  const isAuthenticated = identity && !identity.getPrincipal().isAnonymous();
+
   const handleCallClick = () => {
     window.location.href = 'tel:+919836793679';
+  };
+
+  const handleLogin = () => {
+    navigate({ to: '/login' });
+  };
+
+  const handleLogout = () => {
+    clear();
+    navigate({ to: '/' });
   };
 
   return (
@@ -30,15 +47,42 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Call Button */}
-          <button
-            onClick={handleCallClick}
-            className="flex items-center gap-2 bg-gold-accent hover:bg-gold-accent/90 text-navy-primary px-4 py-2 md:px-6 md:py-2.5 rounded-full font-semibold transition-all duration-300 shadow-gold hover:shadow-gold-lg"
-          >
-            <Phone className="w-4 h-4 md:w-5 md:h-5" />
-            <span className="hidden sm:inline">Call Now</span>
-            <span className="sm:hidden">Call</span>
-          </button>
+          {/* Action Buttons */}
+          <div className="flex items-center gap-2 md:gap-3">
+            {/* Auth Button */}
+            {isAuthenticated ? (
+              <Button
+                onClick={handleLogout}
+                variant="ghost"
+                size="sm"
+                className="text-white/80 hover:text-white hover:bg-white/10 hidden sm:flex"
+              >
+                <LogOut className="w-4 h-4 mr-2" />
+                Logout
+              </Button>
+            ) : (
+              <Button
+                onClick={handleLogin}
+                variant="ghost"
+                size="sm"
+                disabled={isLoggingIn}
+                className="text-white/80 hover:text-white hover:bg-white/10 hidden sm:flex"
+              >
+                <LogIn className="w-4 h-4 mr-2" />
+                Login
+              </Button>
+            )}
+
+            {/* Call Button */}
+            <button
+              onClick={handleCallClick}
+              className="flex items-center gap-2 bg-gold-accent hover:bg-gold-accent/90 text-navy-primary px-4 py-2 md:px-6 md:py-2.5 rounded-full font-semibold transition-all duration-300 shadow-gold hover:shadow-gold-lg"
+            >
+              <Phone className="w-4 h-4 md:w-5 md:h-5" />
+              <span className="hidden sm:inline">Call Now</span>
+              <span className="sm:hidden">Call</span>
+            </button>
+          </div>
         </div>
       </div>
     </header>

@@ -1,4 +1,6 @@
 import { useGetAllBookings, useUpdateBookingStatus } from '../hooks/useQueries';
+import { useInternetIdentity } from '../hooks/useInternetIdentity';
+import { useNavigate } from '@tanstack/react-router';
 import { Status } from '../backend';
 import {
   Table,
@@ -16,13 +18,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Loader2, ChevronDown, RefreshCw, AlertCircle } from 'lucide-react';
+import { Loader2, ChevronDown, RefreshCw, AlertCircle, LogOut } from 'lucide-react';
 import { toast } from 'sonner';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export default function AdminDashboard() {
   const { data: bookings, isLoading, isError, error, refetch } = useGetAllBookings();
   const updateStatus = useUpdateBookingStatus();
+  const { clear } = useInternetIdentity();
+  const navigate = useNavigate();
 
   const handleStatusChange = async (bookingId: bigint, newStatus: Status) => {
     try {
@@ -32,6 +36,12 @@ export default function AdminDashboard() {
       toast.error('Failed to update booking status. Please try again.');
       console.error('Error updating status:', error);
     }
+  };
+
+  const handleLogout = () => {
+    clear();
+    navigate({ to: '/' });
+    toast.success('Logged out successfully');
   };
 
   const formatTimestamp = (timestamp: bigint) => {
@@ -98,15 +108,26 @@ export default function AdminDashboard() {
                 Manage all booking requests
               </p>
             </div>
-            <Button
-              onClick={() => refetch()}
-              variant="outline"
-              size="sm"
-              className="border-white/20 text-white hover:bg-white/10"
-            >
-              <RefreshCw className="h-4 w-4 mr-2" />
-              Refresh
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                onClick={() => refetch()}
+                variant="outline"
+                size="sm"
+                className="border-white/20 text-white hover:bg-white/10"
+              >
+                <RefreshCw className="h-4 w-4 mr-2" />
+                Refresh
+              </Button>
+              <Button
+                onClick={handleLogout}
+                variant="outline"
+                size="sm"
+                className="border-white/20 text-white hover:bg-white/10"
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Logout
+              </Button>
+            </div>
           </div>
 
           {!bookings || bookings.length === 0 ? (

@@ -1,52 +1,82 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Servexa - cleaning service booking website with admin dashboard for managing booking requests",
+  "summary": "Booking service application with customer booking form and admin dashboard, now adding Internet Identity authentication to protect admin access",
   "architectural_notes": [
-    "Admin dashboard at /admin route for viewing booking requests",
-    "Booking form for customers to submit service requests",
-    "Status tracking system (pending/completed) for bookings"
+    "Admin dashboard accessible at /admin route",
+    "Internet Identity integration for authentication",
+    "Public booking form remains accessible without authentication",
+    "Access control: authenticated users can access admin dashboard"
   ],
-  "known_issues": [
-    "Admin dashboard /admin route not loading in Chrome browser - requires proper routing configuration"
-  ],
-  "isFixRequest": true,
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-fix-the-admin-route-configuration-to-ensure-the-admin-dashboard-page-loads-correctly-in-chrome-browser-when-visiting-https-5t3nc-iiaaa-aaaap-qkmaq-cai-icp0-io-admin",
-      "title": "Fix the /admin route configuration to ensure the admin dashboard page loads correctly in Chrome browser when visiting https://5t3nc-iiaaa-aaaap-qkmaq-cai.icp0.io/admin",
-      "reqIds": [
-        "REQ-1"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-ensure-the-admin-dashboard-displays-all-booking-requests-in-a-table-format-with-columns-for-customer-name-phone-number-service-type-address-and-submission-date",
-      "title": "Ensure the admin dashboard displays all booking requests in a table format with columns for customer name, phone number, service type, address, and submission date",
+      "id": "feature-protect-the-admin-route-so-that-only-authenticated-users-can-access-the-admin-dashboard",
+      "title": "Protect the /admin route so that only authenticated users can access the admin dashboard",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-include-status-toggle-functionality-in-the-admin-dashboard-to-allow-marking-bookings-as-pending-or-completed",
-      "title": "Include status toggle functionality in the admin dashboard to allow marking bookings as pending or completed",
+      "id": "feature-keep-the-booking-form-at-the-home-page-publicly-accessible-without-requiring-authentication",
+      "title": "Keep the booking form at the home page publicly accessible without requiring authentication",
       "reqIds": [
         "REQ-3"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-error-handling-to-the-admin-dashboard-to-display-meaningful-error-messages-if-data-fails-to-load-or-if-there-are-connection-issues",
-      "title": "Add error handling to the admin dashboard to display meaningful error messages if data fails to load or if there are connection issues",
+      "id": "feature-add-a-login-button-or-interface-element-that-allows-users-to-authenticate-using-internet-identity",
+      "title": "Add a login button or interface element that allows users to authenticate using Internet Identity",
       "reqIds": [
         "REQ-4"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-add-a-logout-button-that-allows-authenticated-users-to-sign-out-and-clears-their-session",
+      "title": "Add a logout button that allows authenticated users to sign out and clears their session",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-allow-any-authenticated-internet-identity-user-to-access-the-admin-dashboard",
+      "title": "Allow any authenticated Internet Identity user to access the admin dashboard",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
     }
   ],
-  "new_feature_requests": [],
-  "projectName": "Servexa",
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add Internet Identity authentication to protect admin dashboard",
+      "reqIds": [],
+      "status": "in_progress"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Integrate Internet Identity authentication into the frontend application, wrapping the App component with authentication context",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Configure the backend actor to use authenticated identities when available for admin operations",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Servexa Admin",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }
