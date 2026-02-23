@@ -46,8 +46,9 @@ function HomePage() {
 
 function AdminPage() {
   return (
-    <div className="pt-16 md:pt-20">
+    <div className="pt-16 md:pt-20 min-h-screen">
       <AdminDashboard />
+      <Footer />
     </div>
   );
 }
@@ -70,7 +71,10 @@ const adminRoute = createRoute({
 
 const routeTree = rootRoute.addChildren([indexRoute, adminRoute]);
 
-const router = createRouter({ routeTree });
+const router = createRouter({ 
+  routeTree,
+  defaultPreload: 'intent',
+});
 
 declare module '@tanstack/react-router' {
   interface Register {

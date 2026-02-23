@@ -26,6 +26,7 @@ export interface _SERVICE {
   'getAllBookings' : ActorMethod<[], Array<Booking>>,
   'getBooking' : ActorMethod<[bigint], Booking>,
   'submitBooking' : ActorMethod<[string, string, string, string], undefined>,
+  'toggleBookingStatus' : ActorMethod<[bigint], Status>,
   'updateBookingStatus' : ActorMethod<[bigint, Status], undefined>,
 }
 export declare const idlService: IDL.ServiceClass;

@@ -33,10 +33,13 @@ export function useGetAllBookings() {
   return useQuery<Booking[]>({
     queryKey: ['bookings'],
     queryFn: async () => {
-      if (!actor) return [];
-      return actor.getAllBookings();
+      if (!actor) throw new Error('Backend actor not initialized');
+      const bookings = await actor.getAllBookings();
+      return bookings;
     },
     enabled: !!actor && !isFetching,
+    staleTime: 10000,
+    refetchInterval: 30000,
   });
 }
 

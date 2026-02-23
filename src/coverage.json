@@ -1,29 +1,29 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-22T22:00:28.812Z",
+  "generatedAt": "2026-02-23T08:39:53.962Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 5,
+    "total": 4,
     "implemented": 4,
     "items": [
       {
-        "id": "REQ-15",
-        "summary": "Create an admin dashboard page component that displays all booking requests in a table format showing customer name, phone number, service category, address, and submission timestamp",
+        "id": "REQ-1",
+        "summary": "Fix the /admin route configuration to ensure the admin dashboard page loads correctly in Chrome browser when visiting https://5t3nc-iiaaa-aaaap-qkmaq-cai.icp0.io/admin",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/AdminDashboard.tsx"
+          "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/AdminDashboard.tsx"
+          "frontend/src/App.tsx"
         ]
       },
       {
-        "id": "REQ-16",
-        "summary": "Add status tracking functionality to mark booking requests as 'pending' or 'completed' with visual indicators",
+        "id": "REQ-2",
+        "summary": "Ensure the admin dashboard displays all booking requests in a table format with columns for customer name, phone number, service type, address, and submission date",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/components/AdminDashboard.tsx",
@@ -35,26 +35,21 @@
         ]
       },
       {
-        "id": "REQ-17",
-        "summary": "Update backend main.mo to include a status field in the booking data structure and provide functions to update booking status by ID",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-18",
-        "summary": "Add navigation access to the admin dashboard from the header or create a dedicated admin route accessible via URL path like '/admin'",
+        "id": "REQ-3",
+        "summary": "Include status toggle functionality in the admin dashboard to allow marking bookings as pending or completed",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/App.tsx"
+          "frontend/src/components/AdminDashboard.tsx",
+          "frontend/src/hooks/useQueries.ts"
         ],
         "matchedFiles": [
-          "frontend/src/App.tsx"
+          "frontend/src/components/AdminDashboard.tsx",
+          "frontend/src/hooks/useQueries.ts"
         ]
       },
       {
-        "id": "REQ-19",
-        "summary": "Integrate React Query hooks to fetch all bookings and update booking status, ensuring the dashboard refreshes automatically after status changes",
+        "id": "REQ-4",
+        "summary": "Add error handling to the admin dashboard to display meaningful error messages if data fails to load or if there are connection issues",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/components/AdminDashboard.tsx"
@@ -67,7 +62,6 @@
   },
   "changedFiles": [
     "backend/main.mo",
-    "backend/migration.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
@@ -76,7 +70,6 @@
     "frontend/src/backend.d.ts",
     "frontend/src/backend.ts",
     "frontend/src/components/AdminDashboard.tsx",
-    "frontend/src/components/ServicesSection.tsx",
     "frontend/src/declarations/backend.did.d.ts",
     "frontend/src/declarations/backend.did.js",
     "frontend/src/hooks/useQueries.ts",

@@ -27,6 +27,7 @@ export const idlService = IDL.Service({
   'getAllBookings' : IDL.Func([], [IDL.Vec(Booking)], ['query']),
   'getBooking' : IDL.Func([IDL.Nat], [Booking], ['query']),
   'submitBooking' : IDL.Func([IDL.Text, IDL.Text, IDL.Text, IDL.Text], [], []),
+  'toggleBookingStatus' : IDL.Func([IDL.Nat], [Status], []),
   'updateBookingStatus' : IDL.Func([IDL.Nat, Status], [], []),
 });
 
@@ -53,6 +54,7 @@ export const idlFactory = ({ IDL }) => {
         [],
         [],
       ),
+    'toggleBookingStatus' : IDL.Func([IDL.Nat], [Status], []),
     'updateBookingStatus' : IDL.Func([IDL.Nat, Status], [], []),
   });
 };

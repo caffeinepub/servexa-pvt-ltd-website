@@ -25,5 +25,6 @@ export interface backendInterface {
     getAllBookings(): Promise<Array<Booking>>;
     getBooking(id: bigint): Promise<Booking>;
     submitBooking(customerName: string, phoneNumber: string, serviceCategory: string, address: string): Promise<void>;
+    toggleBookingStatus(id: bigint): Promise<Status>;
     updateBookingStatus(id: bigint, status: Status): Promise<void>;
 }

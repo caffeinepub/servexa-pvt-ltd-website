@@ -4,9 +4,7 @@ import Nat "mo:core/Nat";
 import Text "mo:core/Text";
 import Runtime "mo:core/Runtime";
 import Iter "mo:core/Iter";
-import Migration "migration";
 
-(with migration = Migration.run)
 actor {
   type Status = {
     #pending;
@@ -62,6 +60,21 @@ actor {
       case (?booking) {
         let updatedBooking = { booking with status };
         bookings.add(id, updatedBooking);
+      };
+    };
+  };
+
+  public shared ({ caller }) func toggleBookingStatus(id : Nat) : async Status {
+    switch (bookings.get(id)) {
+      case (null) { Runtime.trap("Booking does not exist") };
+      case (?booking) {
+        let newStatus = switch (booking.status) {
+          case (#pending) { #completed };
+          case (#completed) { #pending };
+        };
+        let updatedBooking = { booking with status = newStatus };
+        bookings.add(id, updatedBooking);
+        newStatus;
       };
     };
   };

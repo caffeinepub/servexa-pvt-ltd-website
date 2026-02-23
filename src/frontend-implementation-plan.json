@@ -1,77 +1,79 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add admin dashboard to view and manage booking requests",
+  "title": "Fix admin dashboard routing and loading issues",
   "requirements": [
     {
-      "id": "REQ-15",
-      "summary": "Create an admin dashboard page component that displays all booking requests in a table format showing customer name, phone number, service category, address, and submission timestamp",
+      "id": "REQ-1",
+      "summary": "Fix /admin route configuration to ensure the admin dashboard page loads correctly in Chrome browser",
       "acceptanceCriteria": [
-        "Dashboard displays all booking submissions in a sortable table",
-        "Table columns include: name, phone, service type, address, timestamp",
-        "Timestamps are formatted in a human-readable way",
-        "Table is responsive and works on mobile devices"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/AdminDashboard.tsx",
-          "operation": "create",
-          "description": "Create the admin dashboard page component with a responsive table displaying all booking requests. Use the shadcn-ui Table component to display columns for customer name, phone number, service category, address, and formatted timestamp. Apply glassmorphism card styling consistent with the navy-gold luxury theme. Include loading and error states using the useGetAllBookings hook. Format timestamps using JavaScript Date methods to show human-readable dates and times. Ensure the table is responsive with horizontal scrolling on mobile devices."
-        }
-      ]
-    },
-    {
-      "id": "REQ-16",
-      "summary": "Add status tracking functionality to mark booking requests as 'pending' or 'completed' with visual indicators",
-      "acceptanceCriteria": [
-        "Each booking has a status field (pending/completed)",
-        "Admin can toggle status with a button or dropdown",
-        "Status changes are persisted in the backend",
-        "Visual distinction between pending and completed bookings (colors/badges)"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/AdminDashboard.tsx",
-          "operation": "modify",
-          "description": "Add status column to the bookings table with visual badges using shadcn-ui Badge component. Display 'pending' status in yellow/amber color and 'completed' status in green color. Include a dropdown or button in each row to allow admins to toggle the booking status between 'pending' and 'completed'. Wire the status update action to call the useUpdateBookingStatus mutation hook, passing the booking ID and new status value from the Status enum defined in backend.d.ts."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Add a new useUpdateBookingStatus mutation hook using useMutation from React Query. The mutation should call actor.updateBookingStatus with booking ID and Status enum value. Configure the mutation to invalidate the 'allBookings' query key on success so the dashboard automatically refreshes with updated status. Include error handling for failed status updates."
-        }
-      ]
-    },
-    {
-      "id": "REQ-18",
-      "summary": "Add navigation access to the admin dashboard from the header or create a dedicated admin route accessible via URL path like '/admin'",
-      "acceptanceCriteria": [
-        "Admin dashboard is accessible via a URL route",
-        "Route is not prominently advertised in public navigation (admin-only access)",
-        "Dashboard page uses consistent styling with the rest of the site"
+        "The /admin URL loads successfully in Chrome without blank pages or errors",
+        "The admin dashboard page renders and displays content correctly",
+        "No browser console errors related to routing"
       ],
       "file_operations": [
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Add React Router DOM to enable routing in the application. Wrap the application content with BrowserRouter and Routes components. Create two routes: the main route '/' for the existing home page content (header, hero, services, contact, etc.) and a new route '/admin' that renders the AdminDashboard component. Maintain the navy gradient background and fixed header spacing on both routes. Ensure the admin route is accessible via direct URL navigation but not linked in public navigation."
+          "description": "Review and fix the /admin route configuration in TanStack Router to ensure proper route registration and component rendering. Verify the route path matches '/admin' exactly and the AdminDashboard component is correctly imported and referenced. Ensure the route is included in the router's route tree configuration."
         }
       ]
     },
     {
-      "id": "REQ-19",
-      "summary": "Integrate React Query hooks to fetch all bookings and update booking status, ensuring the dashboard refreshes automatically after status changes",
+      "id": "REQ-2",
+      "summary": "Ensure the admin dashboard displays all booking requests in a table format with all required columns",
       "acceptanceCriteria": [
-        "Dashboard uses useGetAllBookings hook to fetch booking data",
-        "Status update mutation invalidates the bookings query",
-        "Loading and error states are handled gracefully",
-        "Dashboard shows real-time updates after mutations"
+        "All booking requests are fetched and displayed in the table",
+        "Table shows customer name, phone, service, address, and date columns",
+        "Data loads correctly from the backend"
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/AdminDashboard.tsx",
           "operation": "modify",
-          "description": "Integrate the useGetAllBookings hook to fetch booking data in the AdminDashboard component. Display a loading spinner or skeleton when data.isLoading is true. Show an error message with retry button when data.isError is true. Render the bookings table when data is successfully loaded. Use the useUpdateBookingStatus mutation hook for status changes, and display toast notifications on success or error using shadcn-ui Toast component. The dashboard will automatically refresh when the mutation invalidates the query."
+          "description": "Verify the table renders all columns (customer name, phone number, service type, address, submission date) correctly. Ensure the useGetAllBookings hook from useQueries.ts is properly integrated and the data mapping displays each booking field in the appropriate table column. Verify timestamp formatting for the submission date column."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Review the useGetAllBookings hook implementation to ensure it correctly calls the backend getAllBookings method and returns booking data with proper type safety. Verify React Query configuration including staleTime and refetchInterval settings are appropriate for admin dashboard usage."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Include status toggle functionality in the admin dashboard to allow marking bookings as pending or completed",
+      "acceptanceCriteria": [
+        "Each booking row has a status indicator showing pending or completed",
+        "Status can be toggled between pending and completed states",
+        "Status updates persist in the backend"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/AdminDashboard.tsx",
+          "operation": "modify",
+          "description": "Ensure each booking row includes a status toggle UI element (dropdown or toggle button) that displays the current status (pending or completed) and allows toggling between states. Wire the toggle to call the useUpdateBookingStatus mutation hook with the booking ID and new status. Verify the UI updates optimistically and refetches data after successful mutation."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Review the useUpdateBookingStatus mutation hook to ensure it correctly calls the backend updateBookingStatus method with the booking ID and new status. Verify mutation success handling includes query invalidation to refresh the booking list. Ensure proper error handling and TypeScript types match the backend Status enum."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add error handling to the admin dashboard to display meaningful error messages if data fails to load or if there are connection issues",
+      "acceptanceCriteria": [
+        "Error states are caught and displayed to the user",
+        "Error messages are clear and actionable",
+        "Loading states are shown while data is being fetched"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/AdminDashboard.tsx",
+          "operation": "modify",
+          "description": "Enhance error handling to check for query error states from useGetAllBookings and mutation errors from useUpdateBookingStatus. Display clear, user-friendly error messages that explain what went wrong (e.g., 'Failed to load bookings', 'Unable to update status'). Show loading spinners or skeleton states while data is being fetched. Include retry mechanisms or instructions for connection issues."
         }
       ]
     }

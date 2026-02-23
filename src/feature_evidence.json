@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-an-admin-dashboard-page-component-that-displays-all-booking-requests-in-a-table-format-showing-customer-name-phone-number-service-category-address-and-submission-timestamp",
-      "featureTitle": "Create an admin dashboard page component that displays all booking requests in a table format showing customer name, phone number, service category, address, and submission timestamp",
+      "featureId": "feature-fix-the-admin-route-configuration-to-ensure-the-admin-dashboard-page-loads-correctly-in-chrome-browser-when-visiting-https-5t3nc-iiaaa-aaaap-qkmaq-cai-icp0-io-admin",
+      "featureTitle": "Fix the /admin route configuration to ensure the admin dashboard page loads correctly in Chrome browser when visiting https://5t3nc-iiaaa-aaaap-qkmaq-cai.icp0.io/admin",
       "files": [
-        "frontend/src/components/AdminDashboard.tsx"
+        "frontend/src/App.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -15,13 +15,13 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-15"
+        "REQ-1"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-status-tracking-functionality-to-mark-booking-requests-as-pending-or-completed-with-visual-indicators",
-      "featureTitle": "Add status tracking functionality to mark booking requests as 'pending' or 'completed' with visual indicators",
+      "featureId": "feature-ensure-the-admin-dashboard-displays-all-booking-requests-in-a-table-format-with-columns-for-customer-name-phone-number-service-type-address-and-submission-date",
+      "featureTitle": "Ensure the admin dashboard displays all booking requests in a table format with columns for customer name, phone number, service type, address, and submission date",
       "files": [
         "frontend/src/components/AdminDashboard.tsx",
         "frontend/src/hooks/useQueries.ts"
@@ -34,15 +34,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-16"
+        "REQ-2"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-navigation-access-to-the-admin-dashboard-from-the-header-or-create-a-dedicated-admin-route-accessible-via-url-path-like-admin",
-      "featureTitle": "Add navigation access to the admin dashboard from the header or create a dedicated admin route accessible via URL path like '/admin'",
+      "featureId": "feature-include-status-toggle-functionality-in-the-admin-dashboard-to-allow-marking-bookings-as-pending-or-completed",
+      "featureTitle": "Include status toggle functionality in the admin dashboard to allow marking bookings as pending or completed",
       "files": [
-        "frontend/src/App.tsx"
+        "frontend/src/components/AdminDashboard.tsx",
+        "frontend/src/hooks/useQueries.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -52,13 +53,13 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-18"
+        "REQ-3"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-integrate-react-query-hooks-to-fetch-all-bookings-and-update-booking-status-ensuring-the-dashboard-refreshes-automatically-after-status-changes",
-      "featureTitle": "Integrate React Query hooks to fetch all bookings and update booking status, ensuring the dashboard refreshes automatically after status changes",
+      "featureId": "feature-add-error-handling-to-the-admin-dashboard-to-display-meaningful-error-messages-if-data-fails-to-load-or-if-there-are-connection-issues",
+      "featureTitle": "Add error handling to the admin dashboard to display meaningful error messages if data fails to load or if there are connection issues",
       "files": [
         "frontend/src/components/AdminDashboard.tsx"
       ],
@@ -70,7 +71,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-19"
+        "REQ-4"
       ],
       "confidence": "high"
     }

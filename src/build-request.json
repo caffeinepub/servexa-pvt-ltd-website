@@ -1,109 +1,89 @@
 {
   "kind": "build_request",
-  "title": "Add admin dashboard to view and manage booking requests",
+  "title": "Fix admin dashboard routing and loading issues",
   "projectName": "Servexa",
-  "priority": "normal",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-15",
-      "text": "Create an admin dashboard page component that displays all booking requests in a table format showing customer name, phone number, service category, address, and submission timestamp",
+      "id": "REQ-1",
+      "text": "Fix the /admin route configuration to ensure the admin dashboard page loads correctly in Chrome browser when visiting https://5t3nc-iiaaa-aaaap-qkmaq-cai.icp0.io/admin",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-how-to-see",
-          "msg-user-yes"
+          "msg-1",
+          "msg-3",
+          "msg-5",
+          "msg-7"
         ],
         "quotes": [
-          "how to see our website booking request",
-          "yes"
+          "if i am searching in chrome but it's not opening it's not showing anything",
+          "you're copying the full URL https://5t3nc-iiaaa-aaaap-qkmaq-cai.icp0.io/admin into Chrome, but the page isn't loading or displaying anything"
         ]
       },
       "acceptanceCriteria": [
-        "Dashboard displays all booking submissions in a sortable table",
-        "Table columns include: name, phone, service type, address, timestamp",
-        "Timestamps are formatted in a human-readable way",
-        "Table is responsive and works on mobile devices"
+        "The /admin URL loads successfully in Chrome without blank pages or errors",
+        "The admin dashboard page renders and displays content correctly",
+        "No browser console errors related to routing"
       ]
     },
     {
-      "id": "REQ-16",
-      "text": "Add status tracking functionality to mark booking requests as 'pending' or 'completed' with visual indicators",
+      "id": "REQ-2",
+      "text": "Ensure the admin dashboard displays all booking requests in a table format with columns for customer name, phone number, service type, address, and submission date",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5",
+          "msg-7"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All booking requests are fetched and displayed in the table",
+        "Table shows customer name, phone, service, address, and date columns",
+        "Data loads correctly from the backend"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Include status toggle functionality in the admin dashboard to allow marking bookings as pending or completed",
       "target": "both",
       "source": {
         "messageIds": [
-          "msg-assistant-admin-dashboard"
-        ],
-        "quotes": [
-          "Ability to mark requests as 'completed' or 'pending'"
+          "msg-5",
+          "msg-7"
         ]
       },
       "acceptanceCriteria": [
-        "Each booking has a status field (pending/completed)",
-        "Admin can toggle status with a button or dropdown",
-        "Status changes are persisted in the backend",
-        "Visual distinction between pending and completed bookings (colors/badges)"
+        "Each booking row has a status indicator showing pending or completed",
+        "Status can be toggled between pending and completed states",
+        "Status updates persist in the backend"
       ]
     },
     {
-      "id": "REQ-17",
-      "text": "Update backend main.mo to include a status field in the booking data structure and provide functions to update booking status by ID",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-assistant-admin-dashboard"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Booking type includes status field (Text or variant type)",
-        "Update function accepts booking ID and new status",
-        "Status defaults to 'pending' for new bookings",
-        "Query function retrieves bookings with their current status"
-      ]
-    },
-    {
-      "id": "REQ-18",
-      "text": "Add navigation access to the admin dashboard from the header or create a dedicated admin route accessible via URL path like '/admin'",
+      "id": "REQ-4",
+      "text": "Add error handling to the admin dashboard to display meaningful error messages if data fails to load or if there are connection issues",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-how-to-see"
+          "msg-5"
         ]
       },
       "acceptanceCriteria": [
-        "Admin dashboard is accessible via a URL route",
-        "Route is not prominently advertised in public navigation (admin-only access)",
-        "Dashboard page uses consistent styling with the rest of the site"
-      ]
-    },
-    {
-      "id": "REQ-19",
-      "text": "Integrate React Query hooks to fetch all bookings and update booking status, ensuring the dashboard refreshes automatically after status changes",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-assistant-admin-dashboard"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Dashboard uses useGetAllBookings hook to fetch booking data",
-        "Status update mutation invalidates the bookings query",
-        "Loading and error states are handled gracefully",
-        "Dashboard shows real-time updates after mutations"
+        "Error states are caught and displayed to the user",
+        "Error messages are clear and actionable",
+        "Loading states are shown while data is being fetched"
       ]
     }
   ],
   "constraints": [
-    "Do not modify existing booking form functionality",
-    "Maintain single-actor architecture in backend/main.mo",
-    "Use existing React Query hooks pattern from useQueries.ts",
-    "Admin dashboard must use the urban luxury design theme with navy-gold colors and glassmorphism cards"
+    "Must maintain existing backend booking data structure and API",
+    "Must preserve existing React Query integration for data fetching",
+    "Must use TanStack Router for route configuration"
   ],
   "nonGoals": [
-    "Authentication/authorization for admin access",
-    "Exporting bookings to CSV or external systems",
-    "Email notifications for new bookings",
-    "Advanced filtering or search functionality",
-    "Editing customer details after submission"
+    "Adding authentication or login to the admin dashboard",
+    "Creating new booking submission features",
+    "Modifying the public-facing booking form",
+    "Changing the backend data schema"
   ],
   "imageRequirements": {
     "required": [],

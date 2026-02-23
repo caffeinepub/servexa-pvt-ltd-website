@@ -107,6 +107,7 @@ export interface backendInterface {
     getAllBookings(): Promise<Array<Booking>>;
     getBooking(id: bigint): Promise<Booking>;
     submitBooking(customerName: string, phoneNumber: string, serviceCategory: string, address: string): Promise<void>;
+    toggleBookingStatus(id: bigint): Promise<Status>;
     updateBookingStatus(id: bigint, status: Status): Promise<void>;
 }
 import type { Booking as _Booking, Status as _Status, Time as _Time } from "./declarations/backend.did.d.ts";
@@ -152,6 +153,20 @@ export class Backend implements backendInterface {
         } else {
             const result = await this.actor.submitBooking(arg0, arg1, arg2, arg3);
             return result;
+        }
+    }
+    async toggleBookingStatus(arg0: bigint): Promise<Status> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.toggleBookingStatus(arg0);
+                return from_candid_Status_n4(this._uploadFile, this._downloadFile, result);
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.toggleBookingStatus(arg0);
+            return from_candid_Status_n4(this._uploadFile, this._downloadFile, result);
         }
     }
     async updateBookingStatus(arg0: bigint, arg1: Status): Promise<void> {
